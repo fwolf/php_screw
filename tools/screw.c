@@ -3,7 +3,11 @@
 #include <stdarg.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#ifdef WIN32
+#include <windows.h>
+#else
 #include <unistd.h>
+#endif
 #include "../php_screw.h"
 #include "../my_screw.h"
 
