@@ -1,0 +1,22 @@
+// $Id$
+// vim:ft=javascript
+ARG_ENABLE("screw", "for php_screw support", "no");
+
+
+if (PHP_SCREW == "yes") {
+	if (CHECK_LIB("zlib_a.lib;zlib.lib", "screw", PHP_SCREW) &&
+		CHECK_HEADER_ADD_INCLUDE("zlib.h", "CFLAGS", "..\\zlib;" + php_usual_include_suspects)) {
+		
+		EXTENSION("screw", "zencode.c php_screw.h php_screw.c", null, "/D ZLIB_EXPORTS");
+		AC_DEFINE("HAVE_ZLIB", 1, "PHP_SCREW support");
+
+		if (!PHP_SCREW_SHARED) {
+			ADD_DEF_FILE("ext\\screw\\php_screw.def");
+		}
+	} else {
+		WARNING("screw support can't be enabled, screw is missing")
+		PHP_ZLIB = "no"
+	}
+}
+
+
