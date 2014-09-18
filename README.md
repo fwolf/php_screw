@@ -6,6 +6,10 @@ contact:  http://www.pm9.com,  kuni@pm9.com
 
 2. WIN 下编译成独立的DLL 需要指定ZLIB
 
+	Makefile 修改如下
+	LIBS=kernel32. ...(略) zdll.lib
+	LDFLAGS=/nologo  /libpath ...(略)  /libpath:"E:\php\zlib\lib"	
+
 3. ZLIB 下载见:www.zlib.net
 
 4. 如果在PHP编译时候添加依赖库见: http://www.cnblogs.com/liushannet/p/3978866.html
