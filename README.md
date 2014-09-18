@@ -10,5 +10,5 @@ contact:  http://www.pm9.com,  kuni@pm9.com
 
 4. 如果在PHP编译时候添加依赖库见: http://www.cnblogs.com/liushannet/p/3978866.html
 
-php_screw.dll 为PHP5.5.13 线程安全版本
+5. php_screw.dll 为PHP5.5.13 线程安全版本 密码未修改
  
