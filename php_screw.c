@@ -20,14 +20,20 @@
 #include <unistd.h>
 #endif
 #include "php_screw.h"
+#include "my_screw.h"
+#include "Zend/zend_hash.h"
+
+
+extern zend_module_entry php_screw_module_entry;
+#define screw_module_ptr &php_screw_module_entry
+#define phpext_screw_ptr screw_module_ptr
 
 BEGIN_EXTERN_C()
 ZEND_API zend_op_array *(*zend_compile_file)(zend_file_handle *file_handle, int type TSRMLS_DC);
 END_EXTERN_C()
 
-short pm9screw_mycryptkey[] = {
-  11152, 368, 192, 1281, 62
-};
+
+
 PHP_MINIT_FUNCTION(php_screw);
 PHP_MSHUTDOWN_FUNCTION(php_screw);
 PHP_MINFO_FUNCTION(php_screw);
