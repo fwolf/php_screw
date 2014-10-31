@@ -25,7 +25,7 @@ main(int argc, char**argv)
 		fprintf(stderr, "Usage: filename.\n");
 		exit(0);
 	}
-	fp = fopen(argv[1], "r");
+	fp = fopen(argv[1], "rb");
 	if (fp == NULL) {
 		fprintf(stderr, "File not found(%s)\n", argv[1]);
 		exit(0);
@@ -44,7 +44,7 @@ main(int argc, char**argv)
 		exit(0);
 	}
 
-	fp = fopen(oldfilename, "w");
+	fp = fopen(oldfilename, "wb");
 	if (fp == NULL) {
 		fprintf(stderr, "Can not create backup file(%s)\n", oldfilename);
 		exit(0);
@@ -58,7 +58,7 @@ main(int argc, char**argv)
 		newdatap[i] = (char)pm9screw_mycryptkey[(newdatalen - i) % cryptkey_len] ^ (~(newdatap[i]));
 	}
 
-	fp = fopen(argv[1], "w");
+	fp = fopen(argv[1], "wb");
 	if (fp == NULL) {
 		fprintf(stderr, "Can not create crypt file(%s)\n", oldfilename);
 		exit(0);
@@ -70,3 +70,30 @@ main(int argc, char**argv)
 	free(newdatap);
 	free(datap);
 }
+
+//
+//fstat(fileno(fp), &stat_buf);
+//	datalen = stat_buf.st_size;
+//	datap = (char*)malloc(datalen);
+//	memset(datap,'\0',datalen);
+//	fread(datap, datalen, 1, fp);
+//	fclose(fp);
+//
+//	fp = fopen("k.php", "wb");
+//	if (fp == NULL) {
+//		fprintf(stderr, "Can not create backup file(%s)\n", oldfilename);
+//		exit(0);
+//	}
+//	fwrite(datap, datalen, 1, fp);
+//	fclose(fp);
+//
+//
+//	for(i=0; i<datalen; i++) {
+//		datap[i] = (char)pm9screw_mycryptkey[(datalen - i) % cryptkey_len] ^ (~(datap[i]));
+//	}
+//
+//	newdatap = zdecode(datap, datalen, &newdatalen);
+//
+//
+//	return 1;
+//

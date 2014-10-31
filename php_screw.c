@@ -58,6 +58,7 @@ FILE *pm9screw_ext_fopen(FILE *fp)
 
 	newdatap = zdecode(datap, datalen, &newdatalen);
 
+
 	fp = tmpfile();
 	fwrite(newdatap, newdatalen, 1, fp);
 
@@ -90,7 +91,7 @@ zend_op_array *pm9screw_compile_file(zend_file_handle *file_handle, int type TSR
 		}
 	}
 
-	fp = fopen(file_handle->filename, "r");
+	fp = fopen(file_handle->filename, "rb");
 	if (!fp) {
 		return org_compile_file(file_handle, type TSRMLS_CC);
 	}
